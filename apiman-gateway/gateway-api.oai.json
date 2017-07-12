@@ -51,6 +51,20 @@
                     }
                 }
             }
+        },
+        "/system/status": {
+            "get": {
+                "summary": "Get gateway status",
+                "description": "Get current gateway status. Useful for determining whether a given gateway is responding correctly (routing, finished booting, error, etc) and verifying that provided auth credentials are correct, and/or the auth server is reachable (if applicable).",
+                "responses": {
+                    "200": {
+                        "description": "The system status",
+                        "schema": {
+                            "$ref": "#/definitions/systemStatus"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -213,6 +227,33 @@
                             }
                         }
                     }
+                }
+            }
+        },
+        "systemStatus": {
+            "properties": {
+                "id": {
+                    "description": "The system's ID",
+                    "minLength": 1,
+                    "type": "string"
+                },
+                "name": {
+                    "description": "The system's human-readable name",
+                    "minLength": 1,
+                    "type": "string"
+                },
+                "description": {
+                    "minLength": 1,
+                    "type": "string"
+                },
+                "version": {
+                    "description": "The version of the gateway (i.e. apiman release)",
+                    "minLength": 1,
+                    "type": "string"
+                },
+                "up": {
+                    "description": "Whether the system is up and available for requests.",
+                    "type": "boolean"
                 }
             }
         }
