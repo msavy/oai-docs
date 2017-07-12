@@ -97,7 +97,7 @@
                     "description": "The ordered chain of policies attached to this entity.",
                     "type": "array",
                     "items": {
-                        "type": "#/definitions/policy"
+                        "$ref": "#/definitions/policy"
                     }
                 }
             }
