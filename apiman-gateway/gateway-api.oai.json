@@ -102,6 +102,39 @@
         }
     },
     "definitions": {
-        "policies": {}
+        "policy": {
+            "title": "Policy",
+            "required": [
+                "policyJsonConfig",
+                "policyImpl"
+            ],
+            "type": "object",
+            "properties": {
+                "policyJsonConfig": {
+                    "title": "Policy JSON config",
+                    "description": "The policy's escaped/serialised configuration.",
+                    "minLength": 1,
+                    "type": "string"
+                },
+                "policyImpl": {
+                    "title": "Policy implementation.",
+                    "description": "Policy implementation coordinates",
+                    "minLength": 1,
+                    "type": "string"
+                }
+            }
+        },
+        "policies": {
+            "title": "Policies",
+            "properties": {
+                "policies": {
+                    "description": "The ordered chain of policies attached to this entity.",
+                    "type": "array",
+                    "items": {
+                        "type": "#/definitions/policy"
+                    }
+                }
+            }
+        }
     }
 }
