@@ -30,6 +30,27 @@
                     }
                 }
             }
+        },
+        "/clients": {
+            "put": {
+                "summary": "Register a Client",
+                "description": "Register a Client and make it immediately available on the gateway.",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "The API to be published.",
+                        "schema": {
+                            "$ref": "#/definitions/client"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Client was accepted."
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -123,6 +144,75 @@
                 },
                 "apiPolicies": {
                     "$ref": "#/definitions/policies"
+                }
+            }
+        },
+        "client": {
+            "title": "Client",
+            "type": "object",
+            "properties": {
+                "organizationId": {
+                    "title": "Organization identifier",
+                    "minLength": 1,
+                    "type": "string"
+                },
+                "clientId": {
+                    "title": "Client identifier",
+                    "minLength": 1,
+                    "type": "string"
+                },
+                "version": {
+                    "title": "Version identifier",
+                    "minLength": 1,
+                    "type": "string"
+                },
+                "apiKey": {
+                    "title": "API Key",
+                    "minLength": 1,
+                    "type": "string"
+                },
+                "contracts": {
+                    "title": "Contracts",
+                    "required": [
+                        "apiOrgId",
+                        "apiId",
+                        "apiVersion",
+                        "plan"
+                    ],
+                    "type": "array",
+                    "items": {
+                        "title": "Contract",
+                        "type": "object",
+                        "properties": {
+                            "apiOrgId": {
+                                "title": "API Organization ID",
+                                "description": "Organization of API chosen. Must map to a valid API Organization ID.",
+                                "minLength": 1,
+                                "type": "string"
+                            },
+                            "apiId": {
+                                "title": "API ID",
+                                "description": "API chosen. Must map to a valid API ID.",
+                                "minLength": 1,
+                                "type": "string"
+                            },
+                            "apiVersion": {
+                                "title": "API Version",
+                                "description": "Version of API chosen. Must map to a valid API Version.",
+                                "minLength": 1,
+                                "type": "string"
+                            },
+                            "plan": {
+                                "title": "Plan Name",
+                                "description": "Name of plan.",
+                                "minLength": 1,
+                                "type": "string"
+                            },
+                            "policies": {
+                                "$ref": "#/definitions/policies"
+                            }
+                        }
+                    }
                 }
             }
         }
