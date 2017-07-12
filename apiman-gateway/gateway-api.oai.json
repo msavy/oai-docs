@@ -2,6 +2,106 @@
     "swagger": "2.0",
     "info": {
         "title": "Apiman Gateway API",
-        "description": "The Apiman Gateway API"
+        "description": "The Apiman Gateway API",
+        "license": {
+            "name": "Apache 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        },
+        "version": "1.3.0"
+    },
+    "paths": {
+        "/apis": {
+            "put": {
+                "summary": "Publish an API",
+                "description": "Publish an API and make it immediately available on the gateway.",
+                "parameters": [
+                    {
+                        "name": "API",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "apis": {
+                                    "title": "API",
+                                    "required": [
+                                        "organizationId",
+                                        "apiId",
+                                        "version",
+                                        "endpoint",
+                                        "endpointType",
+                                        "endpointContentType"
+                                    ],
+                                    "type": "object",
+                                    "properties": {
+                                        "publicApi": {
+                                            "title": "Public API",
+                                            "default": false,
+                                            "type": "boolean"
+                                        },
+                                        "organizationId": {
+                                            "title": "Organization identifier",
+                                            "minLength": 1,
+                                            "type": "string"
+                                        },
+                                        "apiId": {
+                                            "title": "API identifier",
+                                            "minLength": 1,
+                                            "type": "string"
+                                        },
+                                        "version": {
+                                            "title": "Version identifier",
+                                            "minLength": 1,
+                                            "type": "string"
+                                        },
+                                        "endpoint": {
+                                            "title": "Endpoint URI",
+                                            "minLength": 1,
+                                            "type": "string"
+                                        },
+                                        "endpointType": {
+                                            "title": "Endpoint type",
+                                            "minLength": 1,
+                                            "enum": [
+                                                "rest",
+                                                "soap"
+                                            ]
+                                        },
+                                        "endpointContentType": {
+                                            "title": "Endpoint Content Type",
+                                            "description": "Gateway's content type when responding with errors/failures.",
+                                            "enum": [
+                                                "json",
+                                                "xml"
+                                            ]
+                                        },
+                                        "endpointProperties": {
+                                            "title": "Endpoint properties",
+                                            "type": "object"
+                                        },
+                                        "parsePayload": {
+                                            "title": "Parse payload",
+                                            "description": "Parse whole payload upfront (reduces performance).",
+                                            "default": false,
+                                            "type": "boolean"
+                                        },
+                                        "apiPolicies": {
+                                            "$ref": "#/definitions/policies"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "API was accepted."
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "policies": {}
     }
 }
