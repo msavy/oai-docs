@@ -16,80 +16,11 @@
                 "description": "Publish an API and make it immediately available on the gateway.",
                 "parameters": [
                     {
-                        "name": "API",
+                        "name": "body",
                         "in": "body",
+                        "description": "The API to be published.",
                         "schema": {
-                            "type": "object",
-                            "properties": {
-                                "apis": {
-                                    "title": "API",
-                                    "required": [
-                                        "organizationId",
-                                        "apiId",
-                                        "version",
-                                        "endpoint",
-                                        "endpointType",
-                                        "endpointContentType"
-                                    ],
-                                    "type": "object",
-                                    "properties": {
-                                        "publicApi": {
-                                            "title": "Public API",
-                                            "default": false,
-                                            "type": "boolean"
-                                        },
-                                        "organizationId": {
-                                            "title": "Organization identifier",
-                                            "minLength": 1,
-                                            "type": "string"
-                                        },
-                                        "apiId": {
-                                            "title": "API identifier",
-                                            "minLength": 1,
-                                            "type": "string"
-                                        },
-                                        "version": {
-                                            "title": "Version identifier",
-                                            "minLength": 1,
-                                            "type": "string"
-                                        },
-                                        "endpoint": {
-                                            "title": "Endpoint URI",
-                                            "minLength": 1,
-                                            "type": "string"
-                                        },
-                                        "endpointType": {
-                                            "title": "Endpoint type",
-                                            "minLength": 1,
-                                            "enum": [
-                                                "rest",
-                                                "soap"
-                                            ]
-                                        },
-                                        "endpointContentType": {
-                                            "title": "Endpoint Content Type",
-                                            "description": "Gateway's content type when responding with errors/failures.",
-                                            "enum": [
-                                                "json",
-                                                "xml"
-                                            ]
-                                        },
-                                        "endpointProperties": {
-                                            "title": "Endpoint properties",
-                                            "type": "object"
-                                        },
-                                        "parsePayload": {
-                                            "title": "Parse payload",
-                                            "description": "Parse whole payload upfront (reduces performance).",
-                                            "default": false,
-                                            "type": "boolean"
-                                        },
-                                        "apiPolicies": {
-                                            "$ref": "#/definitions/policies"
-                                        }
-                                    }
-                                }
-                            }
+                            "$ref": "#/definitions/api"
                         }
                     }
                 ],
@@ -133,6 +64,65 @@
                     "items": {
                         "type": "#/definitions/policy"
                     }
+                }
+            }
+        },
+        "api": {
+            "properties": {
+                "publicApi": {
+                    "title": "Public API",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "organizationId": {
+                    "title": "Organization identifier",
+                    "minLength": 1,
+                    "type": "string"
+                },
+                "apiId": {
+                    "title": "API identifier",
+                    "minLength": 1,
+                    "type": "string"
+                },
+                "version": {
+                    "title": "Version identifier",
+                    "minLength": 1,
+                    "type": "string"
+                },
+                "endpoint": {
+                    "title": "Endpoint URI",
+                    "minLength": 1,
+                    "type": "string"
+                },
+                "endpointType": {
+                    "title": "Endpoint type",
+                    "minLength": 1,
+                    "enum": [
+                        "rest",
+                        "soap"
+                    ],
+                    "type": "string"
+                },
+                "endpointContentType": {
+                    "title": "Endpoint Content Type",
+                    "description": "Gateway's content type when responding with errors/failures.",
+                    "enum": [
+                        "json",
+                        "xml"
+                    ]
+                },
+                "endpointProperties": {
+                    "title": "Endpoint properties",
+                    "type": "object"
+                },
+                "parsePayload": {
+                    "title": "Parse payload",
+                    "description": "Parse whole payload upfront (reduces performance).",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "apiPolicies": {
+                    "$ref": "#/definitions/policies"
                 }
             }
         }
