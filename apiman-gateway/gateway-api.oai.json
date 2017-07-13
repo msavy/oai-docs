@@ -262,8 +262,7 @@
     "securityDefinitions": {
         "Standard BASIC": {
             "type": "basic",
-            "description": "The standard auth configuration for apiman gateway is BASIC. This is usually in concert with Keycloak and must be a user with the `apipublisher` role. \n\nIn the quickstart this is `apimanager/apiman123!`.\n\nFor example: `curl -kv https://apimanager:apiman123!@localhost:8080/apiman-gateway-api/system/status`",
-            "scopes": {}
+            "description": "The standard auth configuration for apiman gateway is BASIC. This is usually in concert with Keycloak and must be a user with the `apipublisher` role. \n\nIn the quickstart this is `apimanager/apiman123!`.\n\nFor example: `curl -kv https://apimanager:apiman123!@localhost:8080/apiman-gateway-api/system/status`"
         },
         "Keycloak OAuth2": {
             "type": "oauth2",
