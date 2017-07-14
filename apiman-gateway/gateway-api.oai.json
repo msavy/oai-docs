@@ -20,7 +20,7 @@
                         "in": "body",
                         "description": "The API to be published.",
                         "schema": {
-                            "$ref": "#/definitions/api"
+                            "$ref": "#/definitions/API"
                         }
                     }
                 ],
@@ -41,7 +41,7 @@
                         "in": "body",
                         "description": "The API to be published.",
                         "schema": {
-                            "$ref": "#/definitions/client"
+                            "$ref": "#/definitions/Client"
                         }
                     }
                 ],
@@ -60,7 +60,7 @@
                     "200": {
                         "description": "The system status",
                         "schema": {
-                            "$ref": "#/definitions/systemStatus"
+                            "$ref": "#/definitions/SystemStatus"
                         }
                     }
                 }
@@ -68,7 +68,7 @@
         }
     },
     "definitions": {
-        "systemStatus": {
+        "SystemStatus": {
             "properties": {
                 "id": {
                     "description": "The system's ID",
@@ -95,7 +95,7 @@
                 }
             }
         },
-        "policy": {
+        "Policy": {
             "title": "Policy",
             "required": [
                 "policyJsonConfig",
@@ -118,7 +118,8 @@
                 }
             }
         },
-        "api": {
+        "API": {
+            "title": "API",
             "properties": {
                 "publicApi": {
                     "title": "Public API",
@@ -175,12 +176,12 @@
                 "apiPolicies": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/policy"
+                        "$ref": "#/definitions/Policy"
                     }
                 }
             }
         },
-        "client": {
+        "Client": {
             "title": "Client",
             "type": "object",
             "properties": {
@@ -244,7 +245,7 @@
                             "policies": {
                                 "type": "array",
                                 "items": {
-                                    "$ref": "#/definitions/policy"
+                                    "$ref": "#/definitions/Policy"
                                 }
                             }
                         }
