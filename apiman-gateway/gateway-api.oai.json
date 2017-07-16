@@ -9,6 +9,14 @@
         },
         "version": "1.3.0"
     },
+    "consumes": [
+      "application/json"
+    ],
+    "responses": {
+      "415": {
+        "description": "Unsupported Media Type: Only application/json is accepted."
+      }
+    },    
     "paths": {
         "/apis": {
             "put": {
@@ -48,6 +56,9 @@
                 "responses": {
                     "200": {
                         "description": "Client was accepted."
+                    },
+                    "400": {
+                        "description": "Input format was invalid. Ensure your JSON payload is "
                     }
                 }
             }
