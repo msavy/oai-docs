@@ -39,7 +39,7 @@
                     {
                         "name": "body",
                         "in": "body",
-                        "description": "The API to be published.",
+                        "description": "The Client to be published.",
                         "schema": {
                             "$ref": "#/definitions/Client"
                         }
